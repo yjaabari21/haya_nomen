@@ -16,7 +16,7 @@ class VideoScreen extends StatelessWidget {
               title: "قصة شاكر و شركان",
               image: "lib/assets/images/video1.png",
               video:
-                  "https://pub-246dfc78e70f4e26bb620d10a94f61a2.r2.dev/videos/shaker_sharkan.mp4",
+                  "https://pub-246dfc78e70f4e26bb620d10a94f61a2.r2.dev/videos/shaker.mp4",
             ),
 
             const SizedBox(height: 20),
