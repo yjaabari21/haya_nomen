@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:haya_nomen/models/quests.dart';
 import 'package:haya_nomen/widgets%20and%20screen/result_screen.dart';
 
@@ -130,7 +131,7 @@ class _QuizScreenState extends State<QuizScreen>
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
+                      color: Colors.black.withAlpha((0.08 * 255).round()),
                       blurRadius: 12,
                       offset: const Offset(0, 6),
                     ),
@@ -144,13 +145,17 @@ class _QuizScreenState extends State<QuizScreen>
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(height: 12),
                     Text(
                       'أكملت ${currentQuestion + 1} من ${questions.length} سؤالًا،\nاستمر يا بطل! 💪',
                       textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 22),
+                      style: GoogleFonts.ibmPlexSansArabic(
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton.icon(
@@ -191,9 +196,12 @@ class _QuizScreenState extends State<QuizScreen>
                 const SizedBox(height: 20),
                 Text(
                   question.question,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -209,13 +217,29 @@ class _QuizScreenState extends State<QuizScreen>
                             ? null
                             : () => checkAnswer(index),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: buttonColor,
-                          foregroundColor: Colors.black,
+                          backgroundColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? buttonColor ??
+                                    const Color.fromARGB(255, 18, 143, 192)
+                              : buttonColor ?? Colors.grey[300],
+                          foregroundColor: const Color.fromARGB(
+                            255,
+                            255,
+                            255,
+                            255,
+                          ),
                           padding: const EdgeInsets.all(15),
                         ),
                         child: Text(
                           question.answers[index],
-                          style: const TextStyle(fontSize: 24),
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? const Color.fromARGB(255, 193, 152, 32)
+                                : Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -256,7 +280,7 @@ class _QuizScreenState extends State<QuizScreen>
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: Colors.black.withAlpha((0.08 * 255).round()),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),

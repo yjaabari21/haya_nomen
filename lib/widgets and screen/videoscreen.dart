@@ -71,9 +71,12 @@ class VideoScreen extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Color.fromARGB(255, 230, 189, 69)
+                      : Colors.black,
                 ),
               ),
             ),

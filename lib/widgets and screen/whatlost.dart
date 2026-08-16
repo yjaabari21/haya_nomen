@@ -8,7 +8,6 @@ class WhatLost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(title: Text("")),
       body: SingleChildScrollView(
         child: Center(
@@ -27,7 +26,9 @@ class WhatLost extends StatelessWidget {
                   );
                 },
                 child: Card(
-                  color: const Color.fromARGB(255, 255, 255, 255),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Color.fromARGB(255, 255, 255, 255)
+                      : Colors.black,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -41,11 +42,16 @@ class WhatLost extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const SizedBox(width: 10),
-                            const Text(
+                            Text(
                               'ماذا لو فقدنا الإبهام؟',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Color.fromARGB(255, 18, 143, 192)
+                                    : Colors.white,
                               ),
                             ),
                             const SizedBox(width: 10),
@@ -81,7 +87,9 @@ class WhatLost extends StatelessWidget {
                   );
                 },
                 child: Card(
-                  color: const Color.fromARGB(255, 255, 255, 255),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Color.fromARGB(255, 254, 254, 254)
+                      : Colors.black,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -95,11 +103,16 @@ class WhatLost extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const SizedBox(width: 10),
-                            const Text(
+                            Text(
                               'ماذا لو فقدنا الجاذبية؟',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Color.fromARGB(255, 18, 143, 192)
+                                    : Colors.white,
                               ),
                             ),
                             const SizedBox(width: 10),
@@ -135,7 +148,9 @@ class WhatLost extends StatelessWidget {
                   ),
                 },
                 child: Card(
-                  color: const Color.fromARGB(255, 254, 255, 255),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Color.fromARGB(255, 255, 255, 255)
+                      : Colors.black,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -149,11 +164,16 @@ class WhatLost extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const SizedBox(width: 10),
-                            const Text(
+                            Text(
                               'ماذا لو فقدنا البصر؟',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Color.fromARGB(255, 18, 143, 192)
+                                    : Colors.white,
                               ),
                             ),
                             const SizedBox(width: 10),

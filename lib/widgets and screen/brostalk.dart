@@ -38,6 +38,7 @@ class Brostalk extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Text(
+                    textAlign: TextAlign.center,
                     "يمكنك متابعة باقي القصة على يوتيوب من خلال الرابط أدناه",
                     style: GoogleFonts.ibmPlexSansArabic(
                       fontSize: 16,

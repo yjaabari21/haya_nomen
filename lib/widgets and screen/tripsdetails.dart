@@ -36,9 +36,17 @@ class TripsDetails extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                           const SizedBox(height: 12),
-                          const Text(
+                          Text(
                             'رحلة كأس الماء',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Color.fromARGB(255, 18, 143, 192)
+                                  : Colors.black,
+                            ),
                           ),
                         ],
                       ),
@@ -87,10 +95,18 @@ class TripsDetails extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                           const SizedBox(height: 12),
-                          const Text(
+                          Text(
                             'رحلة ملعقة العسل',
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Color.fromARGB(255, 18, 143, 192)
+                                  : Colors.black,
+                            ),
                           ),
                         ],
                       ),
@@ -139,9 +155,17 @@ class TripsDetails extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                           const SizedBox(height: 12),
-                          const Text(
+                          Text(
                             'رحلة جنين',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Color.fromARGB(255, 18, 143, 192)
+                                  : Colors.black,
+                            ),
                           ),
                         ],
                       ),
@@ -149,6 +173,7 @@ class TripsDetails extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 20),
             ],
           ),
         ),

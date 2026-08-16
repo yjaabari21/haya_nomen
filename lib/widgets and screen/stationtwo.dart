@@ -10,7 +10,6 @@ class StationTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("")),
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Directionality(
           textDirection: TextDirection.rtl,

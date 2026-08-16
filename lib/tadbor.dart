@@ -59,7 +59,7 @@ class _TadborState extends State<Tadbor> {
       "video":
           "https://pub-246dfc78e70f4e26bb620d10a94f61a2.r2.dev/videos/aya7.mp4",
       "description":
-          ".يقول سيد قطب: الهمود درجة بين الحياة والموت. وهكذا تكون الأرض قبل الماء، فإذا نزل عليها الماء ﴿ٱهۡتَزَّتۡ وَرَبَتۡ﴾؛ وهي حركة عجيبة سجلها القرآن قبل أن تسجلها الملاحظة العلمية بمئات الأعوام، فالتربة الجافة حين ينزل عليها الماء تتحرك حركة اهتزاز وهي تتشرب الماء وتنتفخ فتربو، ثم تتفتح بالحياة ﴿وَأَنۢبَتَتۡ مِن كُلِّ زَوۡجِۭ بَهِیجࣲ﴾.",
+          "يقول سيد قطب: الهمود درجة بين الحياة والموت. وهكذا تكون الأرض قبل الماء، فإذا نزل عليها الماء ﴿ٱهۡتَزَّتۡ وَرَبَتۡ﴾؛ وهي حركة عجيبة سجلها القرآن قبل أن تسجلها الملاحظة العلمية بمئات الأعوام، فالتربة الجافة حين ينزل عليها الماء تتحرك حركة اهتزاز وهي تتشرب الماء وتنتفخ فتربو، ثم تتفتح بالحياة ﴿وَأَنۢبَتَتۡ مِن كُلِّ زَوۡجِۭ بَهِیجࣲ﴾.",
     },
     {
       "title": "لكم... لكم !!",
@@ -86,9 +86,19 @@ class _TadborState extends State<Tadbor> {
                 final isActive = activeVideoPath == item["video"];
 
                 return Card(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Color.fromARGB(255, 18, 143, 192)
+                      : Colors.black,
                   margin: const EdgeInsets.all(10),
                   child: ExpansionTile(
-                    title: Text(item["title"]!),
+                    title: Text(
+                      item["title"]!,
+                      style: GoogleFonts.ibmPlexSansArabic(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                     children: [
                       GestureDetector(
                         onTap: () {
@@ -106,11 +116,17 @@ class _TadborState extends State<Tadbor> {
                             : Container(
                                 height: 200,
                                 color: Colors.black,
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.play_circle,
-                                    size: 60,
-                                    color: Colors.white,
+                                child: Center(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(
+                                      Icons.play_arrow,
+                                      size: 42,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -123,6 +139,10 @@ class _TadborState extends State<Tadbor> {
                           style: GoogleFonts.ibmPlexSansArabic(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
                       ),

@@ -51,7 +51,6 @@ class WaterDetails extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text("")),
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -76,7 +75,9 @@ class WaterDetails extends StatelessWidget {
                   const SizedBox(height: 24),
                   ...stations.map((station) {
                     final card = Card(
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Color.fromARGB(255, 18, 143, 192),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -90,7 +91,15 @@ class WaterDetails extends StatelessWidget {
                             Text(
                               station.title,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                fontSize: 18,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Color.fromARGB(255, 18, 143, 192)
+                                    : Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),

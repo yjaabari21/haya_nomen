@@ -10,21 +10,10 @@ class AboutIndex extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              "من نحن",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 137, 111, 15),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            backgroundColor: Colors.cyan[300],
-          ),
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset('lib/assets/images/Colour 1.png'),
+                Image.asset('lib/assets/images/Colour 1.png', height: 650),
                 Center(
                   child: Container(
                     color: Colors.blueAccent,
@@ -77,6 +66,7 @@ class AboutIndex extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
+                SizedBox(height: 30),
               ],
             ),
           ),

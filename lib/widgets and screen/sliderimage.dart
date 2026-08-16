@@ -43,7 +43,7 @@ class SliderImage extends StatelessWidget {
                 child: Image.asset(
                   slide.image,
                   width: double.infinity,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                 ),
               ),
             );

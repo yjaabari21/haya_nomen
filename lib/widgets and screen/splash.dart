@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:haya_nomen/homeindex.dart';
+import 'package:haya_nomen/widgets%20and%20screen/tabbar.dart';
+import 'package:haya_nomen/theme_controller.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({super.key, required this.themeController});
+
+  final ThemeController themeController;
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -30,7 +33,9 @@ class _SplashScreenState extends State<SplashScreen>
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (ctx) => HomeIndex()),
+        MaterialPageRoute(
+          builder: (ctx) => TabsBar(themeController: widget.themeController),
+        ),
       );
     });
   }
@@ -43,45 +48,43 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFF00C9C8), Color(0xFF0097A7)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFF00C9C8), Color(0xFF0097A7)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-        child: Center(
-          child: FadeTransition(
-            opacity: _animation,
-            child: ScaleTransition(
-              scale: _animation,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset("lib/assets/images/Colour 1.png", width: 280),
-                  const SizedBox(height: 25),
-                  // const Text(
-                  //   "هيا نؤمن",
-                  //   style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontSize: 28,
-                  //     fontWeight: FontWeight.bold,
-                  //     letterSpacing: 1,
-                  //   ),
-                  // ),
-                  const SizedBox(height: 30),
-                  const SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 3,
-                    ),
+      ),
+      child: Center(
+        child: FadeTransition(
+          opacity: _animation,
+          child: ScaleTransition(
+            scale: _animation,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset("lib/assets/images/Colour 1.png", width: 280),
+                const SizedBox(height: 25),
+                // const Text(
+                //   "هيا نؤمن",
+                //   style: TextStyle(
+                //     color: Colors.white,
+                //     fontSize: 28,
+                //     fontWeight: FontWeight.bold,
+                //     letterSpacing: 1,
+                //   ),
+                // ),
+                const SizedBox(height: 30),
+                const SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 3,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
