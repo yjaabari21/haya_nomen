@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:haya_nomen/models/quests.dart';
 
 import 'quiz_screen.dart';
@@ -11,7 +12,16 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("النتيجة")),
+      appBar: AppBar(
+        title: Text(
+          "النتيجة",
+          style: GoogleFonts.ibmPlexSansArabic(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
 
       body: Center(
         child: Column(

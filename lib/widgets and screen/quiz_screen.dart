@@ -120,6 +120,16 @@ class _QuizScreenState extends State<QuizScreen>
 
     if (showMilestone) {
       return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "إختبارات",
+            style: GoogleFonts.ibmPlexSansArabic(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+        ),
         body: SafeArea(
           child: Center(
             child: Padding(
@@ -179,6 +189,16 @@ class _QuizScreenState extends State<QuizScreen>
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "إختبارات",
+          style: GoogleFonts.ibmPlexSansArabic(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Directionality(
           textDirection: TextDirection.rtl,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:haya_nomen/widgets%20and%20screen/bees.dart';
 import 'package:haya_nomen/widgets%20and%20screen/waterdetails.dart';
 
 class TripsDetails extends StatelessWidget {
@@ -7,7 +9,16 @@ class TripsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('تفاصيل الرحلة')),
+      appBar: AppBar(
+        title: Text(
+          'تفاصيل الرحلة',
+          style: GoogleFonts.ibmPlexSansArabic(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: SingleChildScrollView(
@@ -59,27 +70,7 @@ class TripsDetails extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => Scaffold(
-                          body: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(
-                                color: Colors.red,
-                                padding: const EdgeInsets.all(12.0),
-                                child: const Text(
-                                  textDirection: TextDirection.rtl,
-                                  'قيد التطوير....',
-                                  style: TextStyle(
-                                    fontSize: 32,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      MaterialPageRoute(builder: (context) => BeesTrip()),
                     );
                   },
                   child: Card(

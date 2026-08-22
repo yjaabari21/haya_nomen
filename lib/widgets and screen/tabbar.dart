@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:haya_nomen/aboutindex.dart';
 import 'package:haya_nomen/homeindex.dart';
 import 'package:haya_nomen/theme_controller.dart';
+import 'package:haya_nomen/widgets%20and%20screen/listen.dart';
 import 'package:haya_nomen/widgets%20and%20screen/searchscreen.dart';
 
 class TabsBar extends StatefulWidget {
@@ -20,7 +21,7 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -175,7 +176,12 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
 
-        children: const [HomeIndex(), SearchScreen(), AboutIndex()],
+        children: const [
+          HomeIndex(),
+          ListenAndLearnScreen(),
+          Searchscreen(),
+          AboutIndex(),
+        ],
       ),
 
       // =========================
@@ -242,7 +248,13 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
             tabs: const [
               Tab(text: 'الرئيسية', icon: Icon(Icons.home_rounded), height: 60),
 
-              Tab(text: 'البحث', icon: Icon(Icons.search_rounded), height: 60),
+              Tab(
+                text: 'اسمع وتعلّم',
+                icon: Icon(Icons.headphones_rounded),
+                height: 60,
+              ),
+
+              Tab(text: 'بحث', icon: Icon(Icons.search), height: 60),
 
               Tab(
                 text: 'من نحن',

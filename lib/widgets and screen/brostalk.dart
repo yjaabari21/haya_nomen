@@ -12,7 +12,16 @@ class Brostalk extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          appBar: AppBar(title: Text("")),
+          appBar: AppBar(
+            title: Text(
+              "عبود و فطوم و الشاشة اللبيبة",
+              style: GoogleFonts.ibmPlexSansArabic(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            centerTitle: true,
+          ),
           body: SingleChildScrollView(
             child: Center(
               child: Column(

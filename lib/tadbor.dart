@@ -73,6 +73,16 @@ class _TadborState extends State<Tadbor> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'تدبر الآيات',
+            style: GoogleFonts.ibmPlexSansArabic(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+        ),
         body: Directionality(
           textDirection: TextDirection.rtl,
           child: SingleChildScrollView(

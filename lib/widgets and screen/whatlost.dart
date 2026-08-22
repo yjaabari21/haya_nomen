@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:haya_nomen/widgets%20and%20screen/wholostdetails.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:haya_nomen/widgets%20and%20screen/eyes.dart';
+import 'package:haya_nomen/widgets%20and%20screen/grav.dart';
+import 'package:haya_nomen/widgets%20and%20screen/lostthumb.dart';
 import 'package:haya_nomen/widgets%20and%20screen/whoslider.dart';
 
 class WhatLost extends StatelessWidget {
@@ -8,7 +11,16 @@ class WhatLost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("")),
+      appBar: AppBar(
+        title: Text(
+          "ماذا لو فقدنا؟",
+          style: GoogleFonts.ibmPlexSansArabic(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -20,9 +32,7 @@ class WhatLost extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const Wholostdetails(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const LostThumb()),
                   );
                 },
                 child: Card(
@@ -70,21 +80,25 @@ class WhatLost extends StatelessWidget {
               const SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      backgroundColor: Colors.lightBlueAccent,
-                      content: Text(
-                        textAlign: TextAlign.right,
-                        textDirection: TextDirection.rtl,
-                        "قيد التطوير......",
-                        style: TextStyle(
-                          fontSize: 28,
-                          color: Color.fromARGB(255, 5, 5, 5),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LostGrav()),
                   );
+                  //   ScaffoldMessenger.of(context).showSnackBar(
+                  //     const SnackBar(
+                  //       backgroundColor: Colors.lightBlueAccent,
+                  //       content: Text(
+                  //         textAlign: TextAlign.right,
+                  //         textDirection: TextDirection.rtl,
+                  //         "قيد التطوير......",
+                  //         style: TextStyle(
+                  //           fontSize: 28,
+                  //           color: Color.fromARGB(255, 5, 5, 5),
+                  //           fontWeight: FontWeight.bold,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   );
                 },
                 child: Card(
                   color: Theme.of(context).brightness == Brightness.dark
@@ -131,20 +145,24 @@ class WhatLost extends StatelessWidget {
               const SizedBox(height: 30),
               InkWell(
                 onTap: () => {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      backgroundColor: Colors.lightBlueAccent,
-                      content: Text(
-                        textAlign: TextAlign.right,
-                        textDirection: TextDirection.rtl,
-                        "قيد التطوير......",
-                        style: TextStyle(
-                          fontSize: 28,
-                          color: Color.fromARGB(255, 5, 5, 5),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   const SnackBar(
+                  //     backgroundColor: Colors.lightBlueAccent,
+                  //     content: Text(
+                  //       textAlign: TextAlign.right,
+                  //       textDirection: TextDirection.rtl,
+                  //       "قيد التطوير......",
+                  //       style: TextStyle(
+                  //         fontSize: 28,
+                  //         color: Color.fromARGB(255, 5, 5, 5),
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LostEyes()),
                   ),
                 },
                 child: Card(

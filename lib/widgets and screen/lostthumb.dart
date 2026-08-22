@@ -4,13 +4,22 @@ import 'package:haya_nomen/widgets%20and%20screen/audioplayer.dart';
 import 'package:haya_nomen/widgets%20and%20screen/videoplayer.dart';
 import 'package:haya_nomen/widgets%20and%20screen/wholostquest.dart';
 
-class Wholostdetails extends StatelessWidget {
-  const Wholostdetails({super.key});
+class LostThumb extends StatelessWidget {
+  const LostThumb({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("")),
+      appBar: AppBar(
+        title: Text(
+          "ماذا لو فقدنا الإبهام؟",
+          style: GoogleFonts.ibmPlexSansArabic(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
