@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:haya_nomen/aboutindex.dart';
 import 'package:haya_nomen/homeindex.dart';
+import 'package:haya_nomen/l10n/app_localizations.dart';
 import 'package:haya_nomen/theme_controller.dart';
+import 'package:haya_nomen/widgets%20and%20screen/lang_controller.dart';
 import 'package:haya_nomen/widgets%20and%20screen/listen.dart';
 import 'package:haya_nomen/widgets%20and%20screen/searchscreen.dart';
 
 class TabsBar extends StatefulWidget {
   final ThemeController themeController;
+  final LanguageController languageController;
 
-  const TabsBar({super.key, required this.themeController});
+  const TabsBar({
+    super.key,
+    required this.themeController,
+    required this.languageController,
+  });
 
   @override
   State<TabsBar> createState() => _TabsBarState();
@@ -30,6 +37,28 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  void _showLanguageDialog() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'قيد التطوير - سيتم إضافة اختيار اللغة قريبًا',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.amber,
+          ),
+        ),
+        backgroundColor: Color(0xFF167A8C),
+      ),
+    );
+
+    // اختيار اللغات متوقف مؤقتًا حتى تكتمل الترجمة.
+    // showDialog<void>(
+    //   context: context,
+    //   builder: (dialogContext) => ...,
+    // );
+  }
+
   // =========================
   // Theme Dialog
   // =========================
@@ -39,14 +68,19 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('مظهر التطبيق', textAlign: TextAlign.center),
+          title: Text(
+            AppLocalizations.of(context)!.appAppearance,
+            textAlign: TextAlign.center,
+          ),
 
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               RadioListTile<ThemeMode>(
-                title: const Text('النظام'),
-                subtitle: const Text('يتبع إعدادات الهاتف'),
+                title: Text(AppLocalizations.of(context)!.system),
+                subtitle: Text(
+                  AppLocalizations.of(context)!.followsPhoneSettings,
+                ),
                 value: ThemeMode.system,
                 groupValue: widget.themeController.themeMode,
                 onChanged: (value) {
@@ -58,7 +92,7 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
               ),
 
               RadioListTile<ThemeMode>(
-                title: const Text('الوضع الفاتح'),
+                title: Text(AppLocalizations.of(context)!.lightMode),
                 value: ThemeMode.light,
                 groupValue: widget.themeController.themeMode,
                 onChanged: (value) {
@@ -70,7 +104,7 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
               ),
 
               RadioListTile<ThemeMode>(
-                title: const Text('الوضع الداكن'),
+                title: Text(AppLocalizations.of(context)!.darkMode),
                 value: ThemeMode.dark,
                 groupValue: widget.themeController.themeMode,
                 onChanged: (value) {
@@ -102,30 +136,15 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
           builder: (context) => IconButton(
             icon: const Icon(Icons.language),
 
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'ميزة الترجمة قيد التطوير',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 233, 181, 24),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28,
-                    ),
-                  ),
-                  duration: Duration(seconds: 5),
-                  backgroundColor: Colors.blue,
-                ),
-              );
-            },
+            onPressed: _showLanguageDialog,
           ),
         ),
 
         // =========================
         // Title
         // =========================
-        title: const Text(
-          'هيا نؤمن',
+        title: Text(
+          AppLocalizations.of(context)!.hayaNomen,
           style: TextStyle(
             color: Color(0xFFB8860B),
             fontSize: 20,
@@ -144,7 +163,7 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
         // =========================
         actions: [
           IconButton(
-            tooltip: 'مظهر التطبيق',
+            tooltip: AppLocalizations.of(context)!.appAppearance,
 
             onPressed: _showThemeDialog,
 
@@ -245,19 +264,27 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
               fontSize: 13,
             ),
 
-            tabs: const [
-              Tab(text: 'الرئيسية', icon: Icon(Icons.home_rounded), height: 60),
+            tabs: [
+              Tab(
+                text: AppLocalizations.of(context)!.home,
+                icon: Icon(Icons.home_rounded),
+                height: 60,
+              ),
 
               Tab(
-                text: 'اسمع وتعلّم',
+                text: AppLocalizations.of(context)!.listenAndLearn,
                 icon: Icon(Icons.headphones_rounded),
                 height: 60,
               ),
 
-              Tab(text: 'بحث', icon: Icon(Icons.search), height: 60),
+              Tab(
+                text: AppLocalizations.of(context)!.search,
+                icon: Icon(Icons.search),
+                height: 60,
+              ),
 
               Tab(
-                text: 'من نحن',
+                text: AppLocalizations.of(context)!.aboutUs,
                 icon: Icon(Icons.person_outline_rounded),
                 height: 60,
               ),

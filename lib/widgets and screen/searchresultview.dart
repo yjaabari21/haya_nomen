@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:haya_nomen/l10n/app_localizations.dart';
 
 class Searchresultview extends StatelessWidget {
   const Searchresultview({super.key, required this.result});
@@ -10,8 +11,9 @@ class Searchresultview extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : const Color(0xFF17343A);
-    final title = _resultTitle();
-    final type = _typeLabel(result['_type'] ?? result['type']);
+    final l10n = AppLocalizations.of(context)!;
+    final title = _resultTitle(l10n);
+    final type = _typeLabel(result['_type'] ?? result['type'], l10n);
     final bookInfo = result['book_info'];
     final entries = <MapEntry<String, dynamic>>[
       if (bookInfo is Map)
@@ -42,7 +44,7 @@ class Searchresultview extends StatelessWidget {
               : const Color(0xFFF6FBFC),
           appBar: AppBar(
             title: Text(
-              'تفاصيل النتيجة',
+              '',
               style: GoogleFonts.ibmPlexSansArabic(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -112,7 +114,7 @@ class Searchresultview extends StatelessWidget {
               ),
               const SizedBox(height: 22),
               Text(
-                'محتوى النتيجة',
+                l10n.resultContent,
                 style: GoogleFonts.ibmPlexSansArabic(
                   color: textColor,
                   fontSize: 18,
@@ -134,7 +136,7 @@ class Searchresultview extends StatelessWidget {
     );
   }
 
-  String _resultTitle() {
+  String _resultTitle(AppLocalizations l10n) {
     final bookInfo = result['book_info'];
     if (bookInfo is Map && _hasText(bookInfo['name'])) {
       return bookInfo['name'].toString();
@@ -161,20 +163,20 @@ class Searchresultview extends StatelessWidget {
         }
       }
     }
-    return 'نتيجة البحث';
+    return l10n.searchResult;
   }
 
   bool _hasText(Object? value) => value is String && value.trim().isNotEmpty;
 
-  String _typeLabel(Object? value) {
-    const labels = {
-      'books': 'كتاب',
-      'fatwas': 'فتوى',
-      'notes': 'ملاحظة',
-      'topics': 'موضوع',
-      'ayahs': 'آية',
+  String _typeLabel(Object? value, AppLocalizations l10n) {
+    final labels = {
+      'books': l10n.book,
+      'fatwas': l10n.fatwa,
+      'notes': l10n.note,
+      'topics': l10n.topic,
+      'ayahs': l10n.ayah,
     };
-    return labels[value?.toString().toLowerCase()] ?? 'تفاصيل النتيجة';
+    return labels[value?.toString().toLowerCase()] ?? l10n.resultDetails;
   }
 
   String _fieldLabel(String key) {

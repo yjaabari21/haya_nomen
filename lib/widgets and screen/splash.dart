@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:haya_nomen/widgets%20and%20screen/lang_controller.dart';
 import 'package:haya_nomen/widgets%20and%20screen/tabbar.dart';
 import 'package:haya_nomen/theme_controller.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key, required this.themeController});
+  const SplashScreen({
+    super.key,
+    required this.themeController,
+    required this.languageController,
+  });
 
   final ThemeController themeController;
+  final LanguageController languageController;
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -34,7 +40,10 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (ctx) => TabsBar(themeController: widget.themeController),
+          builder: (ctx) => TabsBar(
+            themeController: widget.themeController,
+            languageController: widget.languageController,
+          ),
         ),
       );
     });

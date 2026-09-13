@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:haya_nomen/l10n/app_localizations.dart';
 import 'package:haya_nomen/network/quranpedia_service.dart';
 import 'package:haya_nomen/widgets%20and%20screen/searchresultview.dart';
 
@@ -39,7 +40,7 @@ class _SearchscreenState extends State<Searchscreen> {
       setState(() {
         _results = const [];
         _isSearching = false;
-        _error = 'تعذر تنفيذ البحث. تحقق من الاتصال وحاول مرة أخرى.';
+        _error = AppLocalizations.of(context)!.searchError;
       });
     }
   }
@@ -52,6 +53,7 @@ class _SearchscreenState extends State<Searchscreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : const Color(0xFF17343A);
 
@@ -63,7 +65,7 @@ class _SearchscreenState extends State<Searchscreen> {
             : const Color(0xFFF6FBFC),
         appBar: AppBar(
           title: Text(
-            'بحث شامل',
+            l10n.fullSearch,
             style: GoogleFonts.ibmPlexSansArabic(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -80,10 +82,10 @@ class _SearchscreenState extends State<Searchscreen> {
                 textInputAction: TextInputAction.search,
                 onSubmitted: (_) => _search(),
                 decoration: InputDecoration(
-                  hintText: 'ابحث في القرآن والتفاسير والكتب والفتاوى',
+                  hintText: l10n.searchHint,
                   prefixIcon: const Icon(Icons.search_rounded),
                   suffixIcon: IconButton(
-                    tooltip: 'بحث',
+                    tooltip: l10n.search,
                     onPressed: _search,
                     icon: const Icon(Icons.arrow_back_rounded),
                   ),
@@ -107,7 +109,7 @@ class _SearchscreenState extends State<Searchscreen> {
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Icon(Icons.search_rounded),
-                label: Text(_isSearching ? 'جاري البحث...' : 'بحث'),
+                label: Text(_isSearching ? l10n.searching : l10n.search),
               ),
             ),
             Expanded(child: _buildResults(isDark, textColor)),
@@ -125,12 +127,12 @@ class _SearchscreenState extends State<Searchscreen> {
       return _EmptySearch(message: _error!);
     }
     if (!_hasSearched) {
-      return const _EmptySearch(
-        message: 'اكتب كلمة للبحث في محتوى Quranpedia.',
-      );
+      return _EmptySearch(message: AppLocalizations.of(context)!.enterSearch);
     }
     if (_results.isEmpty) {
-      return const _EmptySearch(message: 'لا توجد نتائج لهذا البحث.');
+      return _EmptySearch(
+        message: AppLocalizations.of(context)!.noSearchResults,
+      );
     }
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
@@ -169,7 +171,7 @@ class _SearchResultTile extends StatelessWidget {
         result['topic'] ??
         result['question'] ??
         result['text'] ??
-        'نتيجة بحث';
+        AppLocalizations.of(context)!.searchResult;
     final subtitle =
         result['description'] ??
         result['mufti'] ??
@@ -196,7 +198,9 @@ class _SearchResultTile extends StatelessWidget {
       ),
       subtitle: subtitle == null
           ? null
-          : Text(_formatType(subtitle.toString())),
+          : Text(
+              _formatType(subtitle.toString(), AppLocalizations.of(context)!),
+            ),
       trailing: const Icon(Icons.chevron_left_rounded),
       onTap: () {
         Navigator.push(
@@ -207,13 +211,13 @@ class _SearchResultTile extends StatelessWidget {
     );
   }
 
-  String _formatType(String value) {
-    const labels = {
-      'books': 'كتاب',
-      'fatwas': 'فتوى',
-      'notes': 'ملاحظة',
-      'topics': 'موضوع',
-      'ayahs': 'آية',
+  String _formatType(String value, AppLocalizations l10n) {
+    final labels = {
+      'books': l10n.book,
+      'fatwas': l10n.fatwa,
+      'notes': l10n.note,
+      'topics': l10n.topic,
+      'ayahs': l10n.ayah,
     };
     return labels[value.toLowerCase()] ?? value;
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haya_nomen/l10n/app_localizations.dart';
 import 'package:haya_nomen/tadbor.dart';
 import 'package:haya_nomen/widgets%20and%20screen/brostalk.dart';
 import 'package:haya_nomen/widgets%20and%20screen/catecards.dart';
@@ -13,6 +14,8 @@ class HomeIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
@@ -37,37 +40,37 @@ class HomeIndex extends StatelessWidget {
             mainAxisSpacing: 12,
             children: [
               CategoryCard(
-                title: "قصص إيمانية",
+                title: l10n.storiesOfFaith,
                 image: "lib/assets/images/story book.gif",
                 page: const StoriesDetails(),
                 cardColor: const Color(0xFF4FC3F7),
               ),
               CategoryCard(
-                title: "رحلات إيمانية",
+                title: l10n.spiritualJourneys,
                 image: "lib/assets/images/mig.gif",
                 page: const TripsDetails(),
                 cardColor: const Color(0xFFB8860B),
               ),
               CategoryCard(
-                title: "ماذا لو فقدنا!",
+                title: l10n.whifLost,
                 image: "lib/assets/images/warning.gif",
                 page: const WhatLost(),
                 cardColor: const Color(0xFF4FC3F7),
               ),
               CategoryCard(
-                title: "اختبارات",
+                title: l10n.quiz,
                 image: "lib/assets/images/quiz.gif",
                 page: const QuizScreen(),
                 cardColor: const Color(0xFFB8860B),
               ),
               CategoryCard(
-                title: "تدبر الآيات",
+                title: l10n.verses,
                 image: "lib/assets/images/tadbor.png",
                 page: const Tadbor(),
                 cardColor: const Color(0xFF4FC3F7),
               ),
               CategoryCard(
-                title: "عبود و فطوم و الشاشة اللبيبة",
+                title: l10n.faScreen,
                 image: "lib/assets/images/card-cov.png",
                 page: const Brostalk(),
                 cardColor: const Color(0xFFB8860B),

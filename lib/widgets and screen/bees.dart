@@ -30,7 +30,7 @@ class BeesTrip extends StatelessWidget {
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    'المحطة الأولى: أهمية النحل للبيئة وفوائده',
+                    'قالت نحلة... !',
                     style: GoogleFonts.ibmPlexSansArabic(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class BeesTrip extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'المحطة الثانية: مراحل حياة النحل',
+                    'نحلة فخورة',
                     style: GoogleFonts.ibmPlexSansArabic(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -81,8 +81,8 @@ class BeesTrip extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => VideoPlayerScreen(
                             videoPath:
-                                'https://pub-246dfc78e70f4e26bb620d10a94f61a2.r2.dev/videos/bees.mp4',
-                            title: 'أهمية النحل للبيئة وفوائده',
+                                'https://pub-246dfc78e70f4e26bb620d10a94f61a2.r2.dev/videos/bee_e1.mp4',
+                            title: 'نحلة فخورة',
                           ),
                         ),
                       );
@@ -95,7 +95,7 @@ class BeesTrip extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'المحطة الثالثة: تشريح جسم النحل',
+                    'أعضاء وأجهزة دقيقة',
                     style: GoogleFonts.ibmPlexSansArabic(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class BeesTrip extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'المحطة الرابعة: أهمية النحل في تلقيح النباتات',
+                    'رحلة مضنية من أجل الإنسان',
                     style: GoogleFonts.ibmPlexSansArabic(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -167,15 +167,24 @@ class BeesTrip extends StatelessWidget {
                             width: double.infinity,
                             fit: BoxFit.cover,
                           ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'الجزء الأول - Part 1',
-                            style: GoogleFonts.ibmPlexSansArabic(fontSize: 16),
-                            textAlign: TextAlign.center,
-                          ),
+                          //const SizedBox(height: 10),
+                          // Text(
+                          //   'الجزء الأول - Part 1',
+                          //   style: GoogleFonts.ibmPlexSansArabic(fontSize: 16),
+                          //   textAlign: TextAlign.center,
+                          // ),
                         ],
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'حياة نحلتنا... حياة كوكبنا',
+                    style: GoogleFonts.ibmPlexSansArabic(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.right,
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
@@ -206,12 +215,12 @@ class BeesTrip extends StatelessWidget {
                             width: double.infinity,
                             fit: BoxFit.cover,
                           ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'الجزء الثاني - Part 2',
-                            style: GoogleFonts.ibmPlexSansArabic(fontSize: 16),
-                            textAlign: TextAlign.center,
-                          ),
+                          // const SizedBox(height: 10),
+                          // Text(
+                          //   'الجزء الثاني - Part 2',
+                          //   style: GoogleFonts.ibmPlexSansArabic(fontSize: 16),
+                          //   textAlign: TextAlign.center,
+                          // ),
                         ],
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:haya_nomen/l10n/app_localizations.dart';
 import 'package:haya_nomen/network/quranpedia_service.dart';
 import 'package:haya_nomen/widgets%20and%20screen/quran_reader_screen.dart';
 import 'package:haya_nomen/widgets%20and%20screen/reciter_audio_screen.dart';
@@ -12,6 +13,7 @@ class ListenAndLearnScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : const Color(0xFF17343A);
 
@@ -58,7 +60,7 @@ class ListenAndLearnScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'اسمع وتعلّم',
+                              l10n.listenAndLearn,
                               style: GoogleFonts.ibmPlexSansArabic(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -67,7 +69,7 @@ class ListenAndLearnScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'استمع للقرآن وتعرّف إلى معانيه',
+                              l10n.listenDescription,
                               style: GoogleFonts.ibmPlexSansArabic(
                                 color: Colors.white.withValues(alpha: 0.88),
                                 fontSize: 14,
@@ -87,7 +89,7 @@ class ListenAndLearnScreen extends StatelessWidget {
                                 Uri.parse('https://api.quranpedia.net/'),
                               ),
                               label: Text(
-                                'مصدر البيانات - Quranpedia API',
+                                l10n.dataSource,
                                 style: GoogleFonts.ibmPlexSansArabic(
                                   fontSize: 16,
                                   color: Colors.white,
@@ -129,17 +131,17 @@ class ListenAndLearnScreen extends StatelessWidget {
                     unselectedLabelColor: isDark
                         ? const Color.fromARGB(255, 145, 127, 23)
                         : Color(0xFF167A8C),
-                    tabs: const [
+                    tabs: [
                       Tab(
-                        text: 'القراءات',
+                        text: l10n.readings,
                         icon: Icon(Icons.headphones_rounded),
                       ),
                       Tab(
-                        text: 'الترجمات',
+                        text: l10n.translations,
                         icon: Icon(Icons.translate_rounded),
                       ),
                       Tab(
-                        text: 'الصوتيات',
+                        text: l10n.audio,
                         icon: Icon(Icons.volume_up_rounded),
                       ),
                     ],
@@ -150,15 +152,15 @@ class ListenAndLearnScreen extends StatelessWidget {
                   child: TabBarView(
                     children: [
                       _ApiCollection(
-                        title: 'قراءات المصحف',
-                        description: 'اختر الرواية التي تريد قراءة المصحف بها.',
+                        title: l10n.mushafReadings,
+                        description: l10n.chooseRecitation,
                         future: _quranpedia.getMushafs(),
-                        emptyHint: 'لا توجد قراءات متاحة حاليًا.',
+                        emptyHint: l10n.noReadings,
                         icon: Icons.menu_book_rounded,
                         textColor: textColor,
                         itemBuilder: (item) => _ApiItem(
                           icon: Icons.menu_book_rounded,
-                          title: item['name']?.toString() ?? 'مصحف',
+                          title: item['name']?.toString() ?? l10n.mushaf,
                           subtitle:
                               ((item['rawi'] as Map?)?['full_name'] ??
                                       item['description'])
@@ -167,21 +169,21 @@ class ListenAndLearnScreen extends StatelessWidget {
                           textColor: textColor,
                           onTap: () => _openReader(
                             context,
-                            title: item['name']?.toString() ?? 'المصحف',
+                            title: item['name']?.toString() ?? l10n.mushaf,
                             mushafId: item['id'] as int? ?? 1,
                           ),
                         ),
                       ),
                       _ApiCollection(
-                        title: 'ترجمات المعاني',
-                        description: 'تصفّح جميع كتب الترجمة واللغات المتاحة.',
+                        title: l10n.translationBooks,
+                        description: l10n.browseTranslations,
                         future: _quranpedia.getTranslationBooks(),
-                        emptyHint: 'لا توجد ترجمات متاحة حاليًا.',
+                        emptyHint: l10n.noTranslations,
                         icon: Icons.translate_rounded,
                         textColor: textColor,
                         itemBuilder: (item) => _ApiItem(
                           icon: Icons.translate_rounded,
-                          title: item['name']?.toString() ?? 'ترجمة',
+                          title: item['name']?.toString() ?? l10n.translation,
                           subtitle:
                               ((item['language'] as Map?)?['local_name'] ??
                                       item['card'])
@@ -190,21 +192,23 @@ class ListenAndLearnScreen extends StatelessWidget {
                           textColor: textColor,
                           onTap: () => _openReader(
                             context,
-                            title: item['name']?.toString() ?? 'ترجمة المعاني',
+                            title:
+                                item['name']?.toString() ??
+                                l10n.translationMeaning,
                             translationBookId: item['id'] as int?,
                           ),
                         ),
                       ),
                       _ApiCollection(
-                        title: 'القراءات الصوتية',
-                        description: 'اختر القارئ ثم السورة لتشغيل التلاوة.',
+                        title: l10n.audioReadings,
+                        description: l10n.chooseReciter,
                         future: _quranpedia.getReciters(),
-                        emptyHint: 'لا توجد قراءات صوتية متاحة حاليًا.',
+                        emptyHint: l10n.noAudioReadings,
                         icon: Icons.headphones_rounded,
                         textColor: textColor,
                         itemBuilder: (item) => _ApiItem(
                           icon: Icons.headphones_rounded,
-                          title: item['name']?.toString() ?? 'قارئ',
+                          title: item['name']?.toString() ?? l10n.reciter,
                           subtitle:
                               ((item['recitation_type'] as Map?)?['ar_name'] ??
                                       (item['rawi'] as Map?)?['name'])
@@ -283,8 +287,7 @@ class _ApiCollection extends StatelessWidget {
         if (snapshot.hasError) {
           return _ApiMessage(
             icon: Icons.cloud_off_rounded,
-            message:
-                'تعذر تحميل البيانات. تأكد من اتصال الإنترنت ثم أعد المحاولة.',
+            message: AppLocalizations.of(context)!.loadDataError,
             textColor: textColor,
           );
         }
